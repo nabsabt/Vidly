@@ -22,7 +22,8 @@ namespace Vidly.Controllers
             return View(movie);
             //I added the movie object (Model) to the View as parameter. This will render the movie Model, by the rules, seen in the Random.cshtml file (View)
             //ViewResult (View) is one of the ActionResults, that is why this method can return it, though in the initialization, its type is ActionResult
-            // ViewResult is an ActionResult type, View() is the helper method of it
+            // ViewResult is an ActionResult type, View() is the helper method of it.
+            //The movie object (as parameter, in View()) will be passed to viewResult.ViewData.Model, View() does it
         }
 
         public ActionResult Edit (int id)
