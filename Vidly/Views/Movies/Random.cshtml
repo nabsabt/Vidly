@@ -1,0 +1,13 @@
+﻿@model Vidly.Models.Movie
+<!--We pass the Movie model class to the View (to the Random.cshtml in this case)-->
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ////when I created the Random view (for the MoviesController), I chose the Layout "_Layout.cshtml". 
+    //As the homepage uses this layout scheme as well, I wanted this page to have the same look.
+}
+
+<h2>Name: @Model.Name</h2>
+<h2>ID: @Model.ID</h2>
+<!--Every View has access to the dynamic Model property, with the model (movie, in this case) we pass to it.--> 
+
