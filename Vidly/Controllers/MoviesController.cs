@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
-
+using Vidly.ViewModels;
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
@@ -17,9 +17,22 @@ namespace Vidly.Controllers
         {
             Movie movie = new Movie() {Name = "Shawhank Redemption"};
             //here I created a Movie object, called "movie". I gave property "Name" a value: "Shawhank Redemption"
-            
 
-            return View(movie);
+            //here a Customer-type list created, with 2 Customer objects
+            var customers = new List<Customer>
+            {
+                new Customer{Name="Customer 1"},
+                new Customer{Name="Customer 2"}
+            };
+
+            //here we create a viewModel, which passes the 2 objects (as key-value pairs) to the View (Random.cshtml in this case) in line 35, below
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
             //I added the movie object (Model) to the View as parameter. This will render the movie Model, by the rules, seen in the Random.cshtml file (View)
             //ViewResult (View) is one of the ActionResults, that is why this method can return it, though in the initialization, its type is ActionResult
             // ViewResult is an ActionResult type, View() is the helper method of it.
