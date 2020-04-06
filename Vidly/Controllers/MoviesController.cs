@@ -12,6 +12,24 @@ namespace Vidly.Controllers
         //and to handle the HTTP requests
     {
         // GET: Movies
+
+        public ViewResult Index()
+        {
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie { ID = 1, Name = "Shrek" },
+                new Movie { ID = 2, Name = "Wall-e" }
+            };
+        }
+
+        
         public ActionResult Random()
             //this method is an actionresult
         {
@@ -38,7 +56,7 @@ namespace Vidly.Controllers
             // ViewResult is an ActionResult type, View() is the helper method of it.
             //The movie object (as parameter, in View()) will be passed to viewResult.ViewData.Model, View() does it
         }
-
+        
         public ActionResult Edit (int id)
         {
             return Content("id=" + id);
@@ -77,3 +95,4 @@ namespace Vidly.Controllers
         
     }
 }
+

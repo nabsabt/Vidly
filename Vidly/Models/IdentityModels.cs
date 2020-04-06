@@ -18,8 +18,12 @@ namespace Vidly.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>  //DbContext is the gateway to our database, part of the framework
     {
+        //as our added domain classes (Cust., Movie) is not represented in the db context, we add them here as DbSet
+        //These two DbSets represent the customer/movie table in the database 
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Movie> Movies { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

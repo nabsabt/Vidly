@@ -7,7 +7,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     @Html.Partial("_NavBar")  <!--we render the NavBar.cshtml partial view class here, as we re-created that in another class-->
@@ -15,7 +14,7 @@
         @RenderBody()   <!--what we put in Views, is gonna be placed here, when the View is rendered-->
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Vidly</p>
         </footer>
     </div>
 
