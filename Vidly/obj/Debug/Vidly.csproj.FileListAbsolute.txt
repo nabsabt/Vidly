@@ -112,3 +112,6 @@ D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddIsSubsrcibedT
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddMembershipType.resources
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.PopulateMembershipTypes.resources
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.ApplyAnnotationsToCustomerName.resources
+D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddGenreAndMembershipTypes.resources
+D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddBirthDateToCustomer.resources
+D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddMembershipTypeName.resources

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,51 +12,27 @@ namespace Vidly.Controllers
         //this class is the controller of the Movie model. As Controller, this is responsible for passing the objects from Model(movie) to the View(Random)
         //and to handle the HTTP requests
     {
-        // GET: Movies
+        private ApplicationDbContext _context;  
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();  //here we initialize that object. This helps proper dispose
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         public ViewResult Index()
         {
-            var movies = GetMovies();
+
+            var movies = _context.Movies.Include(c => c.Genre).ToList();  //this is a Dbset to define in our Db context. 
 
             return View(movies);
         }
 
-        private IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>
-            {
-                new Movie { ID = 1, Name = "Shrek" },
-                new Movie { ID = 2, Name = "Wall-e" }
-            };
-        }
 
         
-        public ActionResult Random()
-            //this method is an actionresult
-        {
-            Movie movie = new Movie() {Name = "Shawhank Redemption"};
-            //here I created a Movie object, called "movie". I gave property "Name" a value: "Shawhank Redemption"
-
-            //here a Customer-type list created, with 2 Customer objects
-            var customers = new List<Customer>
-            {
-                new Customer{Name="Customer 1"},
-                new Customer{Name="Customer 2"}
-            };
-
-            //here we create a viewModel, which passes the 2 objects (as key-value pairs) to the View (Random.cshtml in this case) in line 35, below
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-
-            return View(viewModel);
-            //I added the movie object (Model) to the View as parameter. This will render the movie Model, by the rules, seen in the Random.cshtml file (View)
-            //ViewResult (View) is one of the ActionResults, that is why this method can return it, though in the initialization, its type is ActionResult
-            // ViewResult is an ActionResult type, View() is the helper method of it.
-            //The movie object (as parameter, in View()) will be passed to viewResult.ViewData.Model, View() does it
-        }
         
         public ActionResult Edit (int id)
         {
@@ -68,6 +45,7 @@ namespace Vidly.Controllers
             //url: "{controller}/{action}/{id}"
         }
 
+        /*
         public ActionResult Index(int? pageIndex, string sortBy)
         {
             //we marked pageIndex nullable (optional) with sign "?". sortBy is a reference type (string), so its nullable by default
@@ -83,7 +61,7 @@ namespace Vidly.Controllers
 
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
-
+        */
         public ActionResult ByReleaseDate(int year, byte month)
         {
 
