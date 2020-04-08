@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.Migrations;
 using Vidly.Models;
 using Vidly.ViewModels;
 namespace Vidly.Controllers
@@ -32,9 +33,8 @@ namespace Vidly.Controllers
         }
 
 
-        
-        
-        public ActionResult Edit (int id)
+
+            public ActionResult Edit (int id)
         {
             return Content("id=" + id);
             //here I create an action. The parameter "id" takes a value, and the Content() method prints it out.
@@ -43,6 +43,9 @@ namespace Vidly.Controllers
 
             //// the parameter must be named "id" in this case, as in RouteConfig line 18 we call it {id}:
             //url: "{controller}/{action}/{id}"
+
+           
+
         }
 
         /*
@@ -70,7 +73,7 @@ namespace Vidly.Controllers
             //will be printed like: 2015/11 in the body
             
         }
-        
+
+
     }
 }
-

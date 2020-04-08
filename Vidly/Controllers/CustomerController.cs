@@ -54,6 +54,16 @@ namespace Vidly.Controllers
         [HttpPost]  //attribute, HttpGet is not that good here
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
+
             if(customer.Id == 0)
             {
                 _context.Customers.Add(customer);
@@ -70,7 +80,7 @@ namespace Vidly.Controllers
             }
             //_context.Customers.Add(customer);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Customers");
+            return RedirectToAction("Index", "Customer");
         }
 
         public ActionResult Edit(int id)
@@ -86,7 +96,7 @@ namespace Vidly.Controllers
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
-            return View("CustumerForm", viewModel);
+            return View("CustomerForm", viewModel);
         }
 
 

@@ -9,13 +9,13 @@ namespace Vidly.Models
     public class Customer
     {
         public int Id { get; set; }
-        [Required]  //this is a data annotation. With this, the column "Name" will be no longer nullable
+        [Required(ErrorMessage ="Please enter name!")]  //this is a data annotation. With this, the column "Name" will be no longer nullable
         [StringLength(255)]
         public string Name { get; set; }
 
         //
         [Display(Name = "Date of Birth")]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         //
 
