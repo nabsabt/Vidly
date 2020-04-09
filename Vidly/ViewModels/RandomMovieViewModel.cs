@@ -12,6 +12,19 @@ namespace Vidly.ViewModels
     {
         //we set up two properties, a Movie type Movie for the movies, and a Customer-type List for customers
         public Movie Movie { get; set; }
+
+        public IEnumerable<Genre> Genres { get; set; }
         public List<Customer> Customers { get; set; }
+
+        public string Title
+        {
+            get
+            {
+                if (Movie != null && Movie.ID != 0) 
+                return "Edit Movie";
+
+                return "New Movie";
+            }
+        }
     }
 }

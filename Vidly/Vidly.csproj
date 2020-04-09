@@ -211,6 +211,14 @@
     <Compile Include="Migrations\202004090930371_AddNewMigration.Designer.cs">
       <DependentUpon>202004090930371_AddNewMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091003408_AddNewMovie.cs" />
+    <Compile Include="Migrations\202004091003408_AddNewMovie.Designer.cs">
+      <DependentUpon>202004091003408_AddNewMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091004450_AddNewMovie1.cs" />
+    <Compile Include="Migrations\202004091004450_AddNewMovie1.Designer.cs">
+      <DependentUpon>202004091004450_AddNewMovie1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -286,6 +294,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Customer\New.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -330,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004090930371_AddNewMigration.resx">
       <DependentUpon>202004090930371_AddNewMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091003408_AddNewMovie.resx">
+      <DependentUpon>202004091003408_AddNewMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091004450_AddNewMovie1.resx">
+      <DependentUpon>202004091004450_AddNewMovie1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

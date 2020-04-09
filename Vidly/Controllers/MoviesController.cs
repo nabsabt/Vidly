@@ -19,6 +19,16 @@ namespace Vidly.Controllers
             _context = new ApplicationDbContext();  //here we initialize that object. This helps proper dispose
         }
 
+        public ViewResult New()    /// add a new movie
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new RandomMovieViewModel
+            {
+                Genres = genres
+            };
+            return View("MovieForm", viewModel);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
@@ -36,35 +46,22 @@ namespace Vidly.Controllers
 
             public ActionResult Edit (int id)
         {
-            return Content("id=" + id);
-            //here I create an action. The parameter "id" takes a value, and the Content() method prints it out.
-            //I can check it by typing /movies/edit/1, where the movies is the controller(?), the /edit calls the action result, and the /1 is the
-            //optional parameter, we pass. It can be whatever we want in this case
+            var movie = _context.Movies.SingleOrDefault(c => c.ID == id);
 
-            //// the parameter must be named "id" in this case, as in RouteConfig line 18 we call it {id}:
-            //url: "{controller}/{action}/{id}"
+            if (movie == null)
+                return HttpNotFound();
 
-           
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
 
+            return View("MovieForm", viewModel);
         }
 
-        /*
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            //we marked pageIndex nullable (optional) with sign "?". sortBy is a reference type (string), so its nullable by default
-            if (!pageIndex.HasValue)
-            {
-                pageIndex = 1;
-            }
-            if (String.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "Name";
-            }
-            //if pageIndex paramater is not defined, we start with the index 1, if sortBy is not defined, we sort by Name
-
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
-        */
+      
+       
         public ActionResult ByReleaseDate(int year, byte month)
         {
 
@@ -75,5 +72,34 @@ namespace Vidly.Controllers
         }
 
 
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            Vidly.Models.Movie dbMovie = new Movie()
+            {
+                Name = movie.Name,
+
+                GenreID =  movie.GenreID
+            };
+
+            _context.Movies.Add(dbMovie);
+            
+
+            //if (movie.ID == 0)
+            //{
+                
+            //    _context.Movies.Add(movie);
+            //}
+            //{
+            //   var movieInDb = _context.Movies.Single(m => m.ID == movie.ID);
+            //    movieInDb.Name = movie.Name;
+            //    movieInDb.GenreID = movie.GenreID;
+            //}
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+
+        }
     }
 }
