@@ -115,3 +115,4 @@ D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.ApplyAnnotations
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddGenreAndMembershipTypes.resources
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddBirthDateToCustomer.resources
 D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddMembershipTypeName.resources
+D:\infocompass\c#\csharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.AddNewMigration.resources
